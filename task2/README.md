@@ -36,4 +36,4 @@
 
 ![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
 
-Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
+  Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
