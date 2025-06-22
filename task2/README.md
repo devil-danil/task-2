@@ -93,3 +93,14 @@ VNCPASSWORD=12345 ./run.sh
 15. В меню GRUB выбираю загрузку с параметрами по-умолчанию
 
 ![screenshot_10]()
+
+16. Видим, что загружена SystemRescue, вошли под root
+
+![screenshot_11]()
+
+Далее проверим настройки для подключения по ssh
+
+Посмотрим, какие юнит-файлы доступны в systemd (поищем для служб ssh и firewall)
+`systemctl list-unit-files | grep -E 'ssh|fire'``
+
+![screenshot_12]()
