@@ -33,7 +33,7 @@
 
 `VNCPASSWORD=12345 ./run.sh`
 
-![screenshot_1](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
+![screenshot_1](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_1.png)
 
 Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
 
@@ -51,7 +51,7 @@
 
 `sha256sum --check systemrescue-12.01-amd64.iso.sha256`
 
-![screenshot_2](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/W2--lXCBsW3JlQ)
+![screenshot_2](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_2.png)
 
 > Всё ок!
 
@@ -64,7 +64,7 @@
 -	-n — не резолвит имена хостов (ускоряет)  
 -	-P — показывает порты цифрами (без имен)  
 
-![screenshot_3]()
+![screenshot_3](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_3.png)
 
 10. Устанавливаю VNC-клиент (TigerVNC) для macOS
 
@@ -75,29 +75,31 @@ VNCPASSWORD=12345 ./run.sh
 
 11. Запускаю TigerVNC и ввожу данные для подключения к серверу
 
-![screenshot_4]()
-![screenshot_5]()
+![screenshot_4](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_4.png)
+
+![screenshot_5](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_5.png)
 
 12. Вижу ошибку при попытке загрузки с диска
 
-![screenshot_6]()
-![screenshot_7]()
+![screenshot_6](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_6.png)
+
+![screenshot_7](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_7.png)
 
 13. Захожу в Boot Manager Menu
 
-![screenshot_8]()
+![screenshot_8](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_8.png)
 
 14. Перехожу к настройкам SecureBoot, отключаю его и перезагружаю систему
 
-![screenshot_9]()
+![screenshot_9](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_9.png)
 
 15. В меню GRUB выбираю загрузку с параметрами по-умолчанию
 
-![screenshot_10]()
+![screenshot_10](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_10.png)
 
 16. Видим, что загружена SystemRescue, вошли под root
 
-![screenshot_11]()
+![screenshot_11](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_11.png)
 
 17. Далее проверим настройки для подключения по ssh
 
@@ -105,39 +107,39 @@ VNCPASSWORD=12345 ./run.sh
 
 `systemctl list-unit-files | grep -E 'ssh|fire'`
 
-![screenshot_12]()
+![screenshot_12](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_12.png)
 
 18. Проверяю состояние ssh-сервера
 
 `systemctl status sshd`
 
-![screenshot_13]()
+![screenshot_13](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_13.png)
 
 19. Проверяю правила iptables и добавляю правило для SSH
 
 `iptables -L`
 
-![screenshot_14]()
+![screenshot_14](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_14.png)
 
 `iptables -I INPUT -p tcp --dport 22 -j ACCEPT`
 
 `iptables -L INPUT`
 
-![screenshot_15]()
+![screenshot_15](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_15.png)
 
 20. С помощью **passwd** меняю пароль для root пользователя
 
-![screenshot_16]()
+![screenshot_16](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_16.png)
 
 21. Подключаюсь к ВМ по ssh по 2222 порту
 
-![screenshot_17]()
+![screenshot_17](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_17.png)
 
 22. Смотрю информацию о дисках
 
 `lsblk -f`
 
-![screenshot_18]()
+![screenshot_18](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_18.png)
 
 > /dev/sda - проблемный диск
 
@@ -145,7 +147,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `gdisk -l /dev/sda`
 
-![screenshot_19]()
+![screenshot_19](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_19.png)
 
 > Вижу, что основная таблица повреждена, но резервная копия уцелела
 
@@ -160,11 +162,11 @@ VNCPASSWORD=12345 ./run.sh
 - Y - подтверждаю изменения
 - v - verify disk
 
-![screenshot_20]()
+![screenshot_20](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_20.png)
 
 - p - print the partition table
 
-![screenshot_21]()
+![screenshot_21](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_21.png)
 
 - w - write table to disk and exit
 - Y - подтверждаю изменения
@@ -173,7 +175,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `lsblk -f /dev/sda`
 
-![screenshot_22]()
+![screenshot_22](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_22.png)
 
 -	/dev/sda1 — EFI / boot-раздел (VFAT)
 -	/dev/sda2 — корневая файловая система (ext4)
@@ -184,7 +186,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `fsck -n /dev/sda1`
 
-![screenshot_23]()
+![screenshot_23](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_23.png)
 
 - differences between boot sector and its backup
 
@@ -216,7 +218,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `ls -l /mnt`
 
-![screenshot_24]()
+![screenshot_24](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_24.png)
 
 31. Перехожу в chroot в собранной ФС
 
@@ -226,19 +228,19 @@ VNCPASSWORD=12345 ./run.sh
 
 `lsblk -f /dev/sda`
 
-![screenshot_25]()
+![screenshot_25](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_25.png)
 
 33. Считывает метаданные раздела /dev/sda1, чтобы знать точный новый UUID/EFI-метку ESP после форматирования
 
 `blkid /dev/sda1`
 
-![screenshot_26]()
+![screenshot_26](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_26.png)
 
 34. Смотрю содержимое таблицы монтирования и сравниваю текущие записи /boot/efi (или /boot) с тем, что показывает blkid
 
 `cat /etc/fstab`
 
-![screenshot_27]()
+![screenshot_27](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_27.png)
 
 35. Исправляю содержимое /etc/fstab - меняю старый UUID на новый
 
@@ -248,7 +250,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `blkid /dev/sda1`
 
-![screenshot_28]()
+![screenshot_28](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_28.png)
 
 > Теперь UUID и тип файловой системы у каждого раздела корректные
 
@@ -256,7 +258,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `grub-install /dev/sda`
 
-![screenshot_29]()
+![screenshot_29](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_29.png)
 
 37. Выхожу из chroot и размонтирую ФС
 
@@ -266,7 +268,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `mount | grep /mnt`
 
-![screenshot_30]()
+![screenshot_30](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_30.png)
 
 38. Перезагружаю систему
 
@@ -276,13 +278,13 @@ VNCPASSWORD=12345 ./run.sh
 
 Включаю SecureBoot в Boot Manager Menu
 
-![screenshot_31]()
+![screenshot_31](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_31.png)
 
 > Войти в систему не удается, так как не знаю пароля
 
 39. Перезапускаю ВМ и пробую запустить меню GRUB
 
-![screenshot_32]()
+![screenshot_32](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_32.png)
 
 40. Чиню запуск меню GRUB
 
@@ -306,19 +308,19 @@ VNCPASSWORD=12345 ./run.sh
 
 > Значит, grub.cfg есть, просто GRUB не смог до него «дотянуться» из-за неверных переменных
 
-![screenshot_33]()
+![screenshot_33](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_33.png)
 
 41. Редактирую параметры ядра
 
 > Нажимаю 'e', заменяю ro на rw init=/bin/bash и загружаю систему (f10)
 
-![screenshot_34]()
+![screenshot_34](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_34.png)
 
 42. Проверяю всех пользователей
 
 `cat /etc/passwd`
 
-![screenshot_35]()
+![screenshot_35](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_35.png)
 
 > Необходимо залогиниться под пользователем kit
 
@@ -326,7 +328,7 @@ VNCPASSWORD=12345 ./run.sh
 
 `passwd kit`
 
-![screenshot_36]()
+![screenshot_36](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_36.png)
 
 44. Перезагружаю систему
 
@@ -334,7 +336,7 @@ VNCPASSWORD=12345 ./run.sh
 
 45. Система успешно загрузилась, пробую авторизоваться под пользователем kit
 
-![screenshot_37]()
+![screenshot_37](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_37.png)
 
 46. Проверяю, что Secure Boot действительно активирован, и что смонтированы все ФС, перечисленные в оригинальном fstab
 
@@ -344,4 +346,4 @@ VNCPASSWORD=12345 ./run.sh
 
 `cat /etc/fstab`
 
-![screenshot_38]()
+![screenshot_38](https://github.com/devil-danil/task-2/blob/main/screenshots/screenshot_38.png)
