@@ -174,3 +174,26 @@ VNCPASSWORD=12345 ./run.sh
 `lsblk -f /dev/sda`
 
 ![screenshot_22]()
+
+-	/dev/sda1 — EFI / boot-раздел (VFAT)
+-	/dev/sda2 — корневая файловая система (ext4)
+-	/dev/sda3 — шифрованный контейнер LUKS
+-	/dev/sda4 — физический том LVM, внутри логические тома lv_home и lv_var
+
+27. Провожу диагностику загрузочного раздела без правки данных
+
+`fsck -n /dev/sda1`
+
+![screenshot_23]()
+
+- differences between boot sector and its backup
+
+> Основной загрузочный сектор (BPB) отличается от резервного. Обычно не критично: fsck может скопировать резервную копию на место основного
+
+- FSINFO sector has bad magic number(s)
+
+> Повреждён служебный сектор FSINFO: в нём хранятся счётчики свободных кластеров
+
+- Both FATs appear to be corrupt
+
+> Обе таблицы FAT имеют ошибки. Если хотя бы одна цела, fsck сможет восстановить вторую
