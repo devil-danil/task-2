@@ -66,5 +66,30 @@
 
 ![screenshot_3]()
 
-10. Устанавливаю VNC-клиент для macOS
+10. Устанавливаю VNC-клиент (TigerVNC) для macOS
 `brew install tigervnc`
+
+Запускаю скрипт run.sh
+VNCPASSWORD=12345 ./run.sh
+
+11. Запускаю TigerVNC и ввожу данные для подключения к серверу
+
+![screenshot_4]()
+![screenshot_5]()
+
+12. Вижу ошибку при попытке загрузки с диска
+
+![screenshot_6]()
+![screenshot_7]()
+
+13. Захожу в Boot Manager Menu
+
+![screenshot_8]()
+
+14. Перехожу к настройкам SecureBoot, отключаю его и перезагружаю систему
+
+![screenshot_9]()
+
+15. В меню GRUB выбираю загрузку с параметрами по-умолчанию
+
+![screenshot_10]()
