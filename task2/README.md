@@ -38,14 +38,17 @@
 Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
 
 6. Загрузим недостающий образ
+
 `curl -L -o systemrescue-12.01-amd64.iso \
   https://download.system-rescue.org/releases/12.01/systemrescue-12.01-amd64.iso`
 
 Получу хеш_контрольной_суммы
+
 `curl -L -o systemrescue-12.01-amd64.iso.sha256 \
   https://www.system-rescue.org/releases/12.01/systemrescue-12.01-amd64.iso.sha256`
 
 Проверяю целостность образа
+
 `sha256sum --check systemrescue-12.01-amd64.iso.sha256`
 
 ![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/W2--lXCBsW3JlQ)
