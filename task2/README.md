@@ -19,15 +19,16 @@
 Сначала загружаю архив по ссылке
 
 Чтобы распаковать файл c zst-расширением устанавливаю zstd
-brew install zstd
+`brew install zstd`
 
 Распаковываю архив
-unzstd task2.tar.zst
+`unzstd task2.tar.zst`
 
 Теперь распаковываю tar
-tar -xvf task2.tar
+`tar -xvf task2.tar`
 
 Читаю README и пытаюсь запустить скрипт run.sh
+`VNCPASSWORD=12345 ./run.sh`
 
 ![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
 
