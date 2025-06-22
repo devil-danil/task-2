@@ -99,10 +99,28 @@ VNCPASSWORD=12345 ./run.sh
 
 ![screenshot_11]()
 
-Далее проверим настройки для подключения по ssh
+17. Далее проверим настройки для подключения по ssh
 
-Посмотрим, какие юнит-файлы доступны в systemd (поищем для служб ssh и firewall)
+> Посмотрим, какие юнит-файлы доступны в systemd (поищем для служб ssh и firewall)
 
 `systemctl list-unit-files | grep -E 'ssh|fire'`
 
 ![screenshot_12]()
+
+18. Проверяю состояние ssh-сервера
+
+`systemctl status sshd`
+
+![screenshot_13]()
+
+19. Проверяю правила iptables и добавляю правило для SSH
+
+`iptables -L`
+
+![screenshot_14]()
+
+`iptables -I INPUT -p tcp --dport 22 -j ACCEPT`
+
+`iptables -L INPUT`
+
+![screenshot_15]()
