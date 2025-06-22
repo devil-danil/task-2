@@ -33,7 +33,7 @@
 
 `VNCPASSWORD=12345 ./run.sh`
 
-![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
+![screenshot_1](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
 
 Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
 
@@ -51,7 +51,7 @@
 
 `sha256sum --check systemrescue-12.01-amd64.iso.sha256`
 
-![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/W2--lXCBsW3JlQ)
+![screenshot_2](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/W2--lXCBsW3JlQ)
 
 > Всё ок!
 
@@ -267,3 +267,81 @@ VNCPASSWORD=12345 ./run.sh
 `mount | grep /mnt`
 
 ![screenshot_30]()
+
+38. Перезагружаю систему
+
+Ввожу в мониторе QEMU
+
+`system_reset`
+
+Включаю SecureBoot в Boot Manager Menu
+
+![screenshot_31]()
+
+> Войти в систему не удается, так как не знаю пароля
+
+39. Перезапускаю ВМ и пробую запустить меню GRUB
+
+![screenshot_32]()
+
+40. Чиню запуск меню GRUB
+
+> Прошивка успешно запускает grubx64.efi, но тот скорее всего не знает, где его конфигурация
+
+В открывшемся приглашении grub> пробую:
+
+`ls`
+
+> Если модуль normal действительно лежит на корневом разделе (hd0,gpt2 = /dev/sda2), можно вручную поднять меню
+
+`set root=(hd0,gpt2)`
+
+`set prefix=(hd0,gpt2)/boot/grub`
+
+`insmod normal`
+
+`normal`
+
+Меню появилось!
+
+> Значит, grub.cfg есть, просто GRUB не смог до него «дотянуться» из-за неверных переменных
+
+![screenshot_33]()
+
+41. Редактирую параметры ядра
+
+> Нажимаю 'e', заменяю ro на rw init=/bin/bash и загружаю систему (f10)
+
+![screenshot_34]()
+
+42. Проверяю всех пользователей
+
+`cat /etc/passwd`
+
+![screenshot_35]()
+
+> Необходимо залогиниться под пользователем kit
+
+43. Меняю пароль у пользователя kit
+
+`passwd kit`
+
+![screenshot_36]()
+
+44. Перезагружаю систему
+
+`reboot -f`
+
+45. Система успешно загрузилась, пробую авторизоваться под пользователем kit
+
+![screenshot_37]()
+
+46. Проверяю, что Secure Boot действительно активирован, и что смонтированы все ФС, перечисленные в оригинальном fstab
+
+`mokutil --sb-state`
+
+`lsblk -f`
+
+`cat /etc/fstab`
+
+![screenshot_38]()
