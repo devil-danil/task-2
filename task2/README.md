@@ -125,6 +125,52 @@ VNCPASSWORD=12345 ./run.sh
 
 ![screenshot_15]()
 
-С помощью **passwd** меняю пароль для root пользователя
+20. С помощью **passwd** меняю пароль для root пользователя
 
 ![screenshot_16]()
+
+21. Подключаюсь к ВМ по ssh по 2222 порту
+
+![screenshot_17]()
+
+22. Смотрю информацию о дисках
+
+`lsblk -f`
+
+![screenshot_18]()
+
+> /dev/sda - проблемный диск
+
+23. Проверяю таблицу разделов
+
+`gdisk -l /dev/sda`
+
+![screenshot_19]()
+
+> Вижу, что основная таблица повреждена, но резервная копия уцелела
+
+24. Перехожу к восстановлению таблицы разделов
+
+`gdisk /dev/sda`
+
+25. Последовательно выбираю следующие пункты:
+- 1 - Use current GPT
+- r - recovery and transformation options (experts only)
+- c- load backup partition table from disk (rebuilding main)
+- Y - подтверждаю изменения
+- v - verify disk
+
+![screenshot_20]()
+
+- p - print the partition table
+
+![screenshot_21]()
+
+- w - write table to disk and exit
+- Y - подтверждаю изменения
+
+26. Смотрю информацию о /dev/sda
+
+`lsblk -f /dev/sda`
+
+![screenshot_22]()
