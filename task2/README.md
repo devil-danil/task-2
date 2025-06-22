@@ -101,6 +101,6 @@ VNCPASSWORD=12345 ./run.sh
 Далее проверим настройки для подключения по ssh
 
 Посмотрим, какие юнит-файлы доступны в systemd (поищем для служб ssh и firewall)
-`systemctl list-unit-files | grep -E 'ssh|fire'``
+`systemctl list-unit-files | grep -E 'ssh|fire'`
 
 ![screenshot_12]()
