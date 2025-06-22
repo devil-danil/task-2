@@ -124,3 +124,7 @@ VNCPASSWORD=12345 ./run.sh
 `iptables -L INPUT`
 
 ![screenshot_15]()
+
+С помощью **passwd** меняю пароль для root пользователя
+
+![screenshot_16]()
