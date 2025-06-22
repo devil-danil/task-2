@@ -197,3 +197,73 @@ VNCPASSWORD=12345 ./run.sh
 - Both FATs appear to be corrupt
 
 > Обе таблицы FAT имеют ошибки. Если хотя бы одна цела, fsck сможет восстановить вторую
+
+28. Форматирую и размечаю ESP
+
+`mkfs.vfat -F32 -n EFI /dev/sda1`
+
+> Заново создаю EFI-раздел и помечаю его этикеткой EFI
+
+29. Монтирую корневой и загрузочный разделы с жёсткого диска к ФС
+
+`mount /dev/sda2 /mnt`
+
+`mount /dev/sda1 /mnt/boot/efi`
+
+`for d in proc sys dev; do mount --bind /$d /mnt/$d; done`
+
+30. Проверяю монтирование
+
+`ls -l /mnt`
+
+![screenshot_24]()
+
+31. Перехожу в chroot в собранной ФС
+
+`chroot /mnt /bin/bash`
+
+32. Проверяю, что sda1 смонтирован как /boot/efi, а UUID и тип файловой системы у каждого раздела корректные
+
+`lsblk -f /dev/sda`
+
+![screenshot_25]()
+
+33. Считывает метаданные раздела /dev/sda1, чтобы знать точный новый UUID/EFI-метку ESP после форматирования
+
+`blkid /dev/sda1`
+
+![screenshot_26]()
+
+34. Смотрю содержимое таблицы монтирования и сравниваю текущие записи /boot/efi (или /boot) с тем, что показывает blkid
+
+`cat /etc/fstab`
+
+![screenshot_27]()
+
+35. Исправляю содержимое /etc/fstab - меняю старый UUID на новый
+
+`vim /etc/fstab`
+
+`grep vfat /etc/fstab`
+
+`blkid /dev/sda1`
+
+![screenshot_28]()
+
+> Теперь UUID и тип файловой системы у каждого раздела корректные
+
+36. Устанавливаю GRUB
+
+`grub-install /dev/sda`
+
+![screenshot_29]()
+
+37. Выхожу из chroot и размонтирую ФС
+
+`exit`
+
+`umount -R /mnt`
+
+`mount | grep /mnt`
+
+![screenshot_30]()
