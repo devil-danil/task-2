@@ -15,7 +15,7 @@
 
 *Ссылка на архив с образом: https://disk.yandex.ru/d/xwbbmLCWbogOsg*
 
-## Решение
+## Решение основной части
 1. Сначала загружаю архив по ссылке
 
 2. Чтобы распаковать файл c zst-расширением устанавливаю zstd
@@ -36,4 +36,4 @@
 
 ![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
 
-  Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
+&nbsp;&nbsp;&nbsp;Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
