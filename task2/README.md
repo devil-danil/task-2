@@ -27,6 +27,6 @@ tar -xvf task2.tar
 
 Читаю README и пытаюсь запустить скрипт run.sh
 
-!(https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
+![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
 
 Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
