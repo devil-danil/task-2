@@ -12,7 +12,6 @@
 ## Бонусная часть
 Найти и получить секрет.
 
-
 *Ссылка на архив с образом: https://disk.yandex.ru/d/xwbbmLCWbogOsg*
 
 ## Решение основной части
@@ -36,4 +35,4 @@
 
 ![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/GYNCND47czg08g)
 
-&nbsp;&nbsp;&nbsp;Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
+Получаю ошибку из-за отсутствия образа systemrescue-12.01-amd64.iso
