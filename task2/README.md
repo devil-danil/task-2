@@ -42,15 +42,29 @@
 `curl -L -o systemrescue-12.01-amd64.iso \
   https://download.system-rescue.org/releases/12.01/systemrescue-12.01-amd64.iso`
 
-Получу хеш_контрольной_суммы
+7. Получу хеш_контрольной_суммы
 
 `curl -L -o systemrescue-12.01-amd64.iso.sha256 \
   https://www.system-rescue.org/releases/12.01/systemrescue-12.01-amd64.iso.sha256`
 
-Проверяю целостность образа
+8. Проверяю целостность образа
 
 `sha256sum --check systemrescue-12.01-amd64.iso.sha256`
 
 ![](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/W2--lXCBsW3JlQ)
 
-Всё ок!
+> Всё ок!
+
+9. Проверю в другом терминале все TCP-соединения с процессами и отфильтрую по имени процесса qemu
+
+`sudo lsof -iTCP -sTCP:LISTEN -n -P | grep qemu`
+
+•	-iTCP — сетевые TCP-соединения
+•	-sTCP:LISTEN — только слушающие (прослушивающие) порты
+•	-n — не резолвит имена хостов (ускоряет)
+•	-P — показывает порты цифрами (без имен)
+
+![screenshot_3]()
+
+10. Устанавливаю VNC-клиент для macOS
+brew install tigervnc
