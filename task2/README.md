@@ -13,7 +13,7 @@
 Найти и получить секрет.
 
 
-**Ссылка на архив с образом: https://disk.yandex.ru/d/xwbbmLCWbogOsg**
+*Ссылка на архив с образом: https://disk.yandex.ru/d/xwbbmLCWbogOsg*
 
 ## Решение
 Сначала загружаю архив по ссылке
